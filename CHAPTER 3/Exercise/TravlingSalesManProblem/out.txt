@@ -1,0 +1,6 @@
+0 20 42 25 
+120 0 30 34 
+42 30 0 10 
+205 34 100 0 
+
+The minimum cost of all Hamiltonian cycles in the graph is 131

@@ -1,0 +1,112 @@
+//General Tips
+    Tip 1: Filtering versus Generating
+        Programs that examine lots of (if not all) candidate solutions and choose the ones that are 
+        correct (or remove the incorrect ones) are called filters.
+        Programs that gradually build the solutions and immediately prune invalid partial solutions 
+        are called ‘generators’,
+    Tip 2: Prune Infeasible/Inferior Search Space Early
+        When generating solutions using recursive backtracking (see the tip no 1 above), we may encounter 
+        a partial solution that will never lead to a full solution. We can prune the search 
+        there and explore other parts of the search space. 
+    Tip 3: Utilize Symmetries
+        Some problems have symmetries and we should try to exploit symmetries to reduce execution time! In the
+        8-queens problem, there are 92 solutions but there are only 12 unique (or fundamental/canonical) solutions 
+        as there are rotational and line symmetries in the prob-lem. You can utilize this fact by only 
+        generating the 12 unique solutions and, if needed,generate the whole 92 by rotating and reflecting these 
+        12 unique solutions
+    Tip 4: Pre-Computation a.k.a. Pre-Calculation
+        Sometimes it is helpful to generate tables or other data structures that accelerate the lookup of a 
+        result prior to the execution of the program itself. This is called Pre-Computation, in which 
+        one trades memory/space for time. However, this technique can rarely be used for
+        recent programming contest problems.
+    Tip 5: Try Solving the Problem Backwards
+        Some contest problems look far easier when they are solved ‘backwards’ [53] (from a less obvious angle) 
+        than when they are solved using a frontal attack (from the more obvious angle). Be prepared to attempts
+        unconventional approaches to problems.
+    Tips 6: Optimizing Your Source Code
+        There are many tricks that you can use to optimize your code. Understanding computer hardware and how 
+        it is organized, especially the I/O, memory, and cache behavior, can help you design better code.
+    Tip 7: Use Better Data Structures & Algorithms :)
+        Using better data structures and algorithms will always outperform any optimizations mentioned in 
+        Tips 1-6 above. If you are sure that you have written your fastest Complete Search code, but it is still judged as 
+        TLE, abandon the Complete Search approach.    
+
+//Divide and Conquer
+    Divide and Conquer (abbreviated as D&C) is a problem-solving paradigm in which a problem
+    is made simpler by ‘dividing’ it into smaller parts and then conquering each part. The steps:
+        1. Divide the original problem into sub-problems—usually by half or nearly half,
+        2. Find (sub)-solutions for each of these sub-problems—which are now easier,
+        3. If needed, combine the sub-solutions to get a complete solution for the main problem.
+    We have seen examples of the D&C paradigm in the previous sections of this book: Various
+    sorting algorithms (e.g. Quick Sort, Merge Sort, Heap Sort) and Binary Search in Section
+    2.2 utilize this paradigm. The way data is organized in Binary Search Tree, Heap, Segment
+    Tree, and Fenwick Tree in Section 2.3, 2.4.3, and 2.4.4 also relies upon the D&C paradigm.
+
+//Greedy
+
+    An algorithm is said to be greedy if it makes the locally optimal choice at each step with the
+    hope of eventually reaching the globally optimal solution. In some cases, greedy works—the
+    solution is short and runs efficiently. For many others, however, it does not. As discussed
+    in other typical Computer Science textbooks, e.g. [7, 38], a problem must exhibit these two
+    properties in order for a greedy algorithm to work:
+        1. It has optimal sub-structures.
+            Optimal solution to the problem contains optimal solutions to the sub-problems.
+        2. It has the greedy property (difficult to prove in time-critical contest environment!).
+            If we make a choice that seems like the best at the moment and proceed to solve the
+            remaining subproblem, we reach the optimal solution. We will never have to reconsider
+            our previous choices.
+
+    Examples
+        Coin Change - The Greedy Version
+        Balance (Load Balancing)
+        Interval Covering
+        Sort the Input First
+
+    Using Greedy algorithms to attack a ‘non
+    classical’ problem is usually risky. A Greedy algorithm will normally not encounter the TLE
+    response as it is often lightweight, but instead tends to obtain WA verdicts. Proving that a
+    certain ‘non-classical’ problem has optimal sub-structure and greedy property during contest
+    time may be difficult or time consuming, so a competitive programmer should usually use
+    this rule of thumb:
+
+    If the input size is ‘small enough’ to accommodate the time complexity of either Complete
+    Search or Dynamic Programming approaches (see Section 3.5), then use these approaches
+    as both will ensure a correct answer. Only use a Greedy algorithm if the input size given in
+    the problem statement are too large even for the best Complete Search or DP algorithm.
+
+// Dynamic Programming
+    The key skills that you have to develop in order to master DP are the abilities to determine the problem states and to determine the relationships or transitions between current
+    problems and their sub-problems. 
+
+            Top-Down Pros:
+        1. It is a natural transformation from the
+        normal Complete Search recursion
+        2. Computes the sub-problems only when
+        necessary (sometimes this is faster)
+            Bottom-Up pros:
+        1. Faster if many sub-problems are revisited
+        as there is no overhead from recursive calls
+        2. Can save memory space with the ‘space
+        saving trick’ technique
+            Top-Down Cons:
+        1. Slower if many sub-problems are revisited due to function call overhead (this is not
+        usually penalized in programming contests)
+        2. If there are M states, an O(M) table size
+        is required, which can lead to MLE for some
+        harder problems (except if we use the trick
+        in Section 8.3.4)
+            Bottom-up Cons:
+        1. For programmers who are inclined to recursion, this style may not be intuitive
+        2. If there are M states, bottom-up DP
+        visits and fills the value of all these M states
+
+    Classical Examples  
+        1. Max 1D Range Sum
+        2. Max 2D Range Sum
+        3. Longest Increasing Subsequence (LIS)
+        4. 0-1 Knapsack (Subset Sum)
+        5. Coin Change (CC) - The General Version
+        6. Traveling Salesman Problem (TSP)
+    Non-Classical Examples
+        1. UVa 10943 - How do you add?
+        2. UVa 10003 - Cutting Sticks

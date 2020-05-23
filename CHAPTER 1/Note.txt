@@ -1,0 +1,42 @@
+//casting 
+    int a = (int)'9'-48;//result is 9
+
+//2 dimensional vector initialization
+    vector<vector<char>> board(8, vector<char>(8, '*'));
+//3 dimensional vector initialization
+    vector<vector<vector<int>>> store(3, vector<vector<int>>(3, vector<int>(3,0)));
+
+//next permutation with user defined comparison function!
+
+    bool comp(char a, char b)
+    {
+        if (tolower(a) == tolower(b))
+        {
+            return a <= b;
+        }
+        else
+        {
+            return tolower(a) < tolower(b);
+        }
+    }
+
+    do
+    {
+        cout << store << "\n";
+    } while (next_permutation(store.begin(), store.end(), comp));
+
+    //try-catch
+    try{
+    }
+    catch(exception& e){
+        
+    }
+
+//to lower conversion using STL in c++
+    #include<bits/sdtc++.h>
+    transform(s1.begin(),sl.end(), sl.begin(), ::tolower);
+
+//is space 
+    isspace('d');//returns false
+
+

@@ -1,0 +1,62 @@
+//DFS
+    The time complexity of this DFS implementation depends on the graph data structure used.
+    In a graph with V vertices and E edges, DFS runs in O(V + E) and O(V 2) if the graph is
+    stored as Adjacency List and Adjacency Matrix, respectively.
+
+    The DFS code shown here is very similar to the recursive backtracking code.
+    If we compare the pseudocode of a typical backtracking code with the DFS code shown above
+    , we can see that the main difference is the flagging of visited vertices (states). 
+    Backtracking (automatically) un-flag visited vertices (reset the state to previous state) 
+    when the recursion backtracks to allow re-visitation of those vertices (states) from another 
+    branch. By not revisiting vertices of a general graph (via visited checks), DFS runs in 
+    O(V + E), but the time complexity of backtracking is exponential.
+
+//BFS
+    BFS starts with the insertion of the source vertex s into a queue, then processes the queue
+    as follows: Take out the front most vertex u from the queue, enqueue all unvisited neighbors
+    of u (usually, the neighbors are ordered based on their vertex numbers), and mark them as
+    visited. With the help of the queue, BFS will visit vertex s and all vertices in the connected
+    component that contains s layer by layer. BFS algorithm also runs in O(V + E) and O(V 2)
+    on a graph represented using an Adjacency List and Adjacency Matrix, respectively.
+
+
+//Finding Connected Components (Undirected Graph)
+    We can simply use the following code to restart DFS (or BFS) from one of the
+    remaining unvisited vertices to find the next connected component. This process is repeated
+    until all vertices have been visited and has an overall time complexity of O(V + E).
+
+    // inside int main()---this is the DFS solution
+    numCC = 0;
+    dfs_num.assign(V, UNVISITED); // sets all vertices’ state to UNVISITED
+    for (int i = 0; i < V; i++) // for each vertex i in [0..V-1]
+        if (dfs_num[i] == UNVISITED) // if vertex i is not visited yet
+            printf("CC %d:", ++numCC), dfs(i), printf("\n"); //
+
+//Flood Fill - Labeling/Coloring the Connected Components
+    DFS (or BFS) can be used for other purposes than just finding (and counting the number
+    of) connected components. Here, we show how a simple tweak of the O(V + E) dfs(u) (we
+    can also use bfs(u)) can be used to label (also known in CS terminology as ‘to color’) and
+    count the size of each component. This variant is more famously known as ‘flood fill’ and
+    usually performed on implicit graphs (usually 2D grids).
+
+//Topological Sort (Directed Acyclic Graph)
+    Topological sort (or topological ordering) of a Directed Acyclic Graph (DAG) is a linear
+    ordering of the vertices in the DAG so that vertex u comes before vertex v if edge (u → v)
+    exists in the DAG. Every DAG has at least one and possibly more topological sort(s).
+    One application of topological sorting is to find a possible sequence of modules that a
+    University student has to take to fulfill graduation requirement. Each module has certain
+    pre-requisites to be met. These pre-requisites are never cyclic, so they can be modeled as a
+    DAG. Topological sorting this module pre-requisites DAG gives the student a linear list of
+    modules to be taken one after another without violating the pre-requisites constraints.
+    To complete the discussion about topological sort, we show another algorithm for finding
+    topological sort: Kahn’s algorithm.
+
+//Bipartite Graph Check
+    Bipartite graph has important applications that we will see later in Section 4.7.4. In this
+    subsection, we just want to check if a graph is bipartite (or 2/bi-colorable).
+    We can use either BFS or DFS for this check, but we feel that BFS is more natural. 
+    The modified BFS code below starts by coloring the source vertex(first layer) with value 0, 
+    color the direct neighbors of the source vertex (second layer) with value 1, color the neighbors 
+    of direct neighbors (third layer) with value 0 again, and so on, alternating between value 0 and
+    value 1 as the only two valid colors. If we encounter any violation(s) along the way—an edge with
+    two endpoints having the same color, then we can Sconclude that the given input graph is not a bipartite graph.

@@ -1,0 +1,145 @@
+//built in sort
+    sort(variable.begin(), variable.end());
+//partial sort
+    std::partial_sort(v.begin(), v.begin() + 3, v.end()); 
+//stable_sort 
+    stable_sort(arr, arr + n, greater<int>());
+//bit shifting
+    << left shifting
+        5<<1 = 10
+        9<<1 = 18
+    >> right shifting 
+        5>>1 = 2
+        9>>1 = 4
+    1. To check if the j-th item of the set is on,use the bitwise AND operation T=S&(1<<j).
+    2. To multiply/divide an integer by 2, shift the bits in the integer left/right, respectively  1
+    3. To set/turn on the j-th item (0-based indexing) of the set,use the bitwise OR operation S|=(1<<j).
+    4. To clear/turn off the j-th item of the set, use the bitwise AND operation S&=∼(1<<j)
+    5. To toggle (flip the status of) the j-th item of the set,use the bitwise XOR operationS∧=(1<<j).
+    6. To get the value of the least significant bit that is on (first from the right),use T = (S & (-S))
+    7. To turn on all bits in a set of size n,use S=(1<<n)-1
+    8. Obtain the remainder (modulo) of S when it is divided by N(Nis a power of 2): S&(N−1)
+    9. Determine ifSis a power of 2. : (S&(S−1)) == 0
+    10. Turn off the last bit inS, e.g.S= (40)10= (101000)2→S= (32)10= (100000)2. : S&(S−1)
+    11. Turn on the last zero inS, e.g.S= (41)10= (101001)2→S= (43)10= (101011)2. : S‖(S+1)
+    12. Turn off the last consecutive run of ones in S e.g.S= (39)10= (100111)2→S= (32)10= (100000)2. : S&(S+1)
+    13. Turn on the last consecutive run of zeroes inSe.g.S= (36)10= (100100)2→S= (39)10= (100111)2. : S‖(S−1)
+    
+//Balanced Binary Search Tree (BST) C++ STL map/set below can provide you O(log n) performance for insertion/search/
+    deletion operations
+        Allows for O(logn) search(key), insert(key), findMin()/findMax(), successor(key)/predecessor(key), and
+        delete(key).
+        The difference between map and set is simple: the C++ STL map sotres key -> data pairs whereas the c++
+        STL set only stores the key.
+        A complete binary tree is a binary tree in which every level, except possibly the last, is completely filled.All 
+        vertices in the last level must also be filled from left-to-right.
+        Inorder (Left, Root, Right) 
+        Preorder (Root, Left, Right)
+        Postorder (Left, Right, Root)
+        uccessor of a node is the next node in Inorder traversal of the Binary Tree. Inorder Successor is NULL for the last
+        node in Inoorder traversal.
+                set<int> store;
+                int min = *store.begin();
+                int max = *store.rbegin();
+                store.erase(max);
+    //Sorted set
+        set<pair<int, int>> 
+
+//Heap: C++ STLpriorityqueue
+    Complete binary treescan be stored efficiently in a compact 1-indexed array of size n+ 1, which is oftenpreferred
+     to an explicit tree representation.
+    One can navigate from a certain index (vertex)ito its parent, left child, andright child by using simple index 
+    manipulation:i/2, 2×i ,and 2×i + 1, respectively.
+    These index manipulations can be made faster using bit manipulation techniques (seeSection 2.2):i>>1,i<<1,and 
+    (i<<1) + 1, respectively.
+    Instead of enforcing the BST property, the (Max) Heap enforces the Heap property:in each subtree rooted atx, 
+    items on the leftandright subtrees ofxare smaller than(or equal to)x
+    The property guarantees that the top (or root) of the heapis always the maximum element. There is no notion of a
+     ‘search’ in the Heap (unlikeBSTs).
+    ExtractMax(), Insert(v)
+    This data structure is also used to perform partialsort. Think how this can be implemented.
+    A MaxHeap containing numbers can easily be converted into a Min Heap (and vice versa) by inserting the negatedkeys. 
+    This is because negating a set of numbers will reverse their order of appearance when sorted. Thistrick is used several 
+    times in this book. However, if the priority queue is used to store32-bit signed integers,an overflow will occur if −2^31
+    is negated as 2^31 −1 is the maximum value of a 32-bit signed integer.
+
+    A  simple form of Hash Tables can be used in programming contests. ‘Direct Addressing Tables’ (DATs) can be considered
+    to be Hash Tables where the keys themselves are the indices, or where the ‘hash function’ is the identity function. Forexample, 
+    we may need to assign all possible ASCII characters [0-255] to integer values,
+
+//Hash Table: C++11 STLunorderedmap
+    maps or sets are usually fast enough as the typical input size of (programming contest) problems is usually
+    not more than 1M. Within these bounds, theO(1) performance of Hash Tables andO(log 1M)performance for balanced BSTs
+    do not differ by much. 
+//Multisets are a type of associative containers similar to set, with an exception that multiple elements can have same values.
+
+
+//algorithms not reviewed yet
+    sorting: radix sort and bucket sort
+//Datastructures not reviewed yet
+    Heap data structure and do Exercises starting from 2.2.7
+    linked list
+
+
+
+
+//Stack
+    push()/pop()(insert/remove from top of stack),top()
+//Queue
+    push()/pop()(insert from back/remove from front ofqueue),front()/back()(obtain content from the front/back of queue), andempty().
+//Double-ended Queue (Deque)
+    pushback(), popfront() (just like the normal queue), pushfront() and popback() (specific for deque).
+//Linked Lists
+    Concatinating to Lists
+        a.insert(a.end(), b.begin(), b.end());
+    moving items of b and emptying b
+        b.splice(a.end(),b);
+
+//Iterator
+    map<int, int> m;
+    vector<int> v;
+    for(map<int,int>::iterator it = m.begin(); it != m.end(); ++it) {
+    v.push_back(it->first);
+    cout << it->first << "\n";
+    }
+//precision and rounding
+    for (map<string, double>::iterator i = dict_store.begin(); i != dict_store.end(); i++){
+            cout << i->first << " " << fixed << setprecision(6) << ((i->second) * 100) / total << "\n";
+        }
+
+
+
+//The Adjacency Matrix
+    Build a ‘connectivity table’ by creating a static 2D array:int Adj Mat [V][V].
+    An Adjacency Matrix is a good choice if the connectivity between two vertices
+    in as mall dense graphis frequently required.  However, it is not recommended for 
+    large sparse graphs as it would require too much space (O(V2)) and there would
+    be many blank (zero) cells in the 2D array.
+
+//The Adjacency List
+    typedef pair<int, int> ii; typedef vector<ii> vii; // data type shortcuts
+
+//The Edge List, usually in the form of a vector
+    Using the C++ STL:vector<pair<int, ii>>
+
+//Implicit Graph
+    1. The edges can be determined easily: e.g., Graph mine game
+    2. The edges can be determined with some rules.
+//The Union-Find Disjoint Set 
+    A disjoint-set data structure is a data structure that keeps track of a set of 
+    elements partitioned into a number of disjoint (non-overlapping) subsets.
+    (UFDS) is a data structure to model a collection of disjoint setswith the ability 
+    to efficiently24—in≈O(1)—determine which set an item belongs to (or totest whether 
+    two items belong to the same set) and to unite two disjoint sets into one largerset. 
+    Such data structure can be used to solve the problem of finding connected components
+    in an undirected graph.
+
+    
+//UVa 10038 hasn't been submitted
+//UVa 10038 wrong answer
+//redo UVa 10954
+Exercise 2.3.9*
+Exercise 2.3.10*
+Exercise 2.3.11*
+Exercise 2.3.12*
+Exercise 2.4.4.1 --- End :
