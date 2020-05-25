@@ -40,7 +40,7 @@ int main()
         {1,1,0,0,0,0},
         {1,0,1,0,0,0}
     };
-    vector<int> visted = vector<int>(ADJ_MAT.size(),-1);
+    vector<int> visited = vector<int>(ADJ_MAT.size(),-1);
     vector<vector<int>> ADJ_LST{
         {},
         {},
@@ -54,8 +54,8 @@ int main()
 
     for(int i = 0; i < ADJ_MAT.size();i++){
         
-        if(visted[i] == -1){
-            dfs_ADJ_MAT(i,ADJ_MAT, visted,ts);
+        if(visited[i] == -1){
+            dfs_ADJ_MAT(i,ADJ_MAT, visited,ts);
         }
     }
     for(int i = ts.size()-1;i > -1; i--){
@@ -63,15 +63,15 @@ int main()
     }
     cout<<"\n";
 
-    visted = vector<int>(ADJ_LST.size(),-1);
+    visited = vector<int>(ADJ_LST.size(),-1);
     cout<<"Topological sort using Adjecency List:\n";
     
     ts = vector<int>();
 
-    dfs_ADJ_LST(0,ADJ_LST, visted,ts);
+    dfs_ADJ_LST(0,ADJ_LST, visited,ts);
     for(int i = 0; i < ADJ_LST.size();i++){
-        if(visted[i] == -1)
-            dfs_ADJ_LST(i,ADJ_LST, visted,ts);
+        if(visited[i] == -1)
+            dfs_ADJ_LST(i,ADJ_LST, visited,ts);
     }
     for(int i = ts.size()-1;i > -1; i--){
         cout<<ts[i]<<" ";
