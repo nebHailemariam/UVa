@@ -64,7 +64,7 @@ int main()
         {0,0,0,0},
         {0,0,1,0}
     };
-    vector<int> visted = vector<int>(ADJ_MAT.size(),-1);
+    vector<int> visited = vector<int>(ADJ_MAT.size(),-1);
     vector<vector<int>> ADJ_LST{
         {1,3},
         {0},
@@ -72,10 +72,10 @@ int main()
         {2}
     };
     cout<<"Adjecency Matrixs:\n";
-    bfs_ADJ_MAT(0,ADJ_MAT, visted);
+    bfs_ADJ_MAT(0,ADJ_MAT, visited);
     cout<<"\n";
-    visted = vector<int>(ADJ_LST.size(),-1);
+    visited = vector<int>(ADJ_LST.size(),-1);
     cout<<"Adjencency List:\n";
-    bfs_ADJ_LST(0,ADJ_LST, visted);
+    bfs_ADJ_LST(0,ADJ_LST, visited);
 
 }
