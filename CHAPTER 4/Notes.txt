@@ -72,5 +72,30 @@
            EXPLORED to a vertex with state: EXPLORED too. This is an important application of
            this algorithm. Note that we usually do not count bi-directional edges as having a
            ‘cycle’ (We need to remember dfs_parent to distinguish this, see the code below).
+           Shortly back edges point from a node to one of its ancestors in the DFS tree
         3. Forward/Cross edges from vertex with state: EXPLORED to vertex with state: VISITED.
            These two type of edges are not typically tested in programming contest problems.
+           Shortly Forward egdge point from a node to one of its descendants.
+
+//Finding Articulation Points and Bridges
+    An ‘Articulation Point’ is defined as a vertex in a graph G whose removal (all edges
+    incident to this vertex are also removed) disconnects G. A graph without any articulation
+    point is called ‘Biconnected’. Similarly, a ‘Bridge’ is defined as an edge in a graph G whose
+    removal disconnects G. 
+
+        1. Run O(V + E) DFS (or BFS) to count number of connected components (CCs) of the
+            original graph. Usually, the input is a connected graph, so this check will usually gives
+            us one connected component.
+        2. For each vertex v ∈ V // O(V )
+            (a) Cut (remove) vertex v and its incident edges
+            (b) Run O(V + E) DFS (or BFS) and see if the number of CCs increases
+            (c) If yes, v is an articulation point/cut vertex; Restore v and its incident edges
+
+    This naive algorithm calls DFS (or BFS) O(V ) times, thus it runs in O(V × (V + E)) =
+    O(V^2 + V E). 
+    
+    But this is not the best algorithm as we can actually just run the O(V + E)
+    DFS once to identify all the articulation points and bridges.
+    
+    John Edward Hopcroft and Robert Endre Tarjan DFS variant could find the articulation points and
+    bridges in O(V+E).
